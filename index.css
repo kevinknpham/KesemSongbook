@@ -1,0 +1,371 @@
+/*
+Kevin Pham
+CSS file providing layout, colors, and other style elements to html.
+Additionally contains some animations for the header.
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One|Indie+Flower|Josefin+Sans|Lobster|Staatliches');
+
+body {
+  background: linear-gradient(172.88deg, #0038FF 0%, #00B2FF 8.85%, #14FFF1 16.15%, #26FF63 23.44%, #00FF75 31.25%, #00FFC2 37.5%, #00D1FF 45.31%, #00A3FF 51.04%, #0066FF 58.33%, #00D1FF 65.1%, #00FFF0 69.79%, #00FF85 77.6%, #24FF00 83.85%, #ADFF00 91.67%, #EBFF00 100%);
+}
+
+/*==========Category Buttons==========*/
+#nav-btn {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  background: white;
+  color: black;
+  border-radius: 50% 50% 50% 0 ;
+  vertical-align: middle;
+  z-index: 2;
+  border: solid 3px black;
+}
+
+#nav-btn img {
+  color: white;
+  display: block;
+  position: absolute;
+  border-radius: 50%;
+  width: 50%;
+  height: 50%;
+  transition: width 200ms, height 200ms;
+  z-index: 4;
+}
+
+#categories {
+  position: fixed;
+  width: 20%;
+  height: auto;
+  top: 120px;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: rgba(75,75,75,.8);
+  display: flex;
+  flex-direction: column;
+  transition: left 1000ms;
+  z-index: 2;
+}
+
+.nav-hidden {
+  left: -20%;
+}
+
+.nav-shown {
+  left: 2%;
+}
+
+.category {
+  display: block;
+  background-color: white;
+  border: 1px solid black;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  font-family: 'Fjalla One', sans-serif;
+  font-size: 20pt;
+  margin: 5px auto 5px auto;
+  z-index: 4;
+  width: 95%;
+  height: auto;
+  text-align: center;
+}
+
+.category:hover, #nav-btn:hover {
+  background-color: #818181;
+  color: white;
+}
+
+main {
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.67) 0%, rgba(225, 225, 225, 0.3) 14.58%, rgba(196, 196, 196, 0) 100%);
+  height: 100%;
+}
+
+header {
+  text-align: center;
+  font-size: 60pt;
+}
+
+h1 {
+  font-family: 'Lobster', Bookman, cursive;
+  position: relative;
+  animation: heading;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes heading {
+  0% {
+    top: -100px;
+    color: white;
+    text-shadow: -200px 102px black, 200px 104px white;
+  }
+  100% {
+    top: 0;
+    color: rgb(200,200,200);
+    text-shadow: 2px 2px white, 4px 4px black;
+  }
+}
+
+header p {
+  font-family: 'Indie Flower', sans-serif;
+  animation: subtitle;
+  animation-duration: 1s;
+  animation-delay: 2s;
+}
+
+@keyframes subtitle {
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(180deg);
+  }
+  100% {
+    transform: rotateY(0deg);
+  }
+}
+
+header span {
+  border-radius: 50%;
+  box-shadow: 0 0 3px 3px gray;
+  color: #420dab;
+  background: linear-gradient(127.41deg, #FFB800 8.91%, #FFD850 23.4%, #FFD850 33.93%, #E4B200 62.47%, #D9A900 93.2%);
+}
+
+/*==========Songs==========*/
+
+@media only screen and (max-width: 800px) {
+  #songlist {
+    grid-template-columns: repeat(1, minmax(90%, 1fr));
+  }
+  
+  .song h2 {
+    font-size: 45pt;
+  }
+  
+  .song p {
+    font-size: 35pt;
+  }
+  
+  #modal h2 {
+    font-size: 60pt;
+  }
+
+  #modal p {
+    font-size: 30pt;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  #songlist {
+    grid-template-columns: repeat(2, minmax(40%, 1fr));
+  }
+  
+  .song h2 {
+    font-size: 40pt;
+  }
+  
+  .song p {
+    font-size: 30pt;
+  }
+  
+  #modal h2 {
+    font-size: 50pt;
+  }
+
+  #modal p {
+    font-size: 30pt;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  #songlist {
+    grid-template-columns: repeat(3, minmax(28%, 1fr));
+  }
+  
+  .song h2 {
+    font-size: 30pt;
+  }
+  
+  .song p {
+    font-size: 20pt;
+  }
+  
+  #modal h2 {
+    font-size: 40pt;
+  }
+
+  #modal p {
+    font-size: 30pt;
+  }
+}
+
+@media only screen and (min-width: 1500px) {
+  #songlist {
+    grid-template-columns: repeat(4, minmax(22%, 1fr));
+  }
+  
+  .song h2 {
+    font-size: 20pt;
+  }
+  
+  .song p {
+    font-size: 15pt;
+  }
+  
+  #modal h2 {
+    font-size: 40pt;
+  }
+
+  #modal p {
+    font-size: 15pt;
+  }
+}
+
+#songlist {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-gap: 20px;
+}
+
+.song {
+  width: auto;
+  border-top: 2px solid black;
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;
+  border-left: 10px solid black;
+  border-radius: 2px;
+  background-color: rgba(255, 255, 255, .7);
+  padding: 5px;
+  transition: box-shadow 300ms;
+}
+
+.song:hover {
+  box-shadow: 10px 10px #0c8dff, -10px -10px #00991e;
+  background-image: linear-gradient(#fbffaf, #ffbf60, #ff9872);
+}
+
+.title {
+  font-family: 'Fjalla One', sans-serif;
+}
+
+.lyrics {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+/*==========Full Lyrics==========*/
+#modal {
+  position: fixed;
+  z-index: 1;
+  padding: 0;
+  left: 5vw;
+  top: 5vh;
+  width: 90vw;
+  height: 90vh;
+  overflow: auto;
+  background:
+	/* Pineapple details */
+	radial-gradient(circle closest-side at 50px 50px, #FB8B24 3px, transparent 0),
+	radial-gradient(circle closest-side at 40px 60px, #FB8B24 3px, transparent 0),
+	radial-gradient(circle closest-side at 60px 60px, #FB8B24 3px, transparent 0),
+	radial-gradient(circle closest-side at 50px 70px, #FB8B24 3px, transparent 0),
+	
+	radial-gradient(circle closest-side at 150px 165px, #FB8B24 3px, transparent 0),
+	radial-gradient(circle closest-side at 140px 175px, #FB8B24 3px, transparent 0),
+	radial-gradient(circle closest-side at 160px 175px, #FB8B24 3px, transparent 0),
+	radial-gradient(circle closest-side at 150px 185px, #FB8B24 3px, transparent 0),
+	
+	/* Pineapple base */
+	radial-gradient(ellipse closest-side at 50px 60px, #F9A734 18px, transparent 0),
+	
+	radial-gradient(ellipse closest-side at 150px 175px, #F9A734 18px, transparent 0),
+	
+	/* Pineapple leafs */
+	radial-gradient(circle closest-side at 30px 40px, #F9D8D4 15px, transparent 0),
+	radial-gradient(circle closest-side at 40px 35px, #36964C 15px, transparent 0),
+	radial-gradient(circle closest-side at 70px 40px, #F9D8D4 15px, transparent 0),
+	radial-gradient(circle closest-side at 60px 35px, #286E38 15px, transparent 0),
+	
+	radial-gradient(circle closest-side at 130px 155px, #F9D8D4 15px, transparent 0),
+	radial-gradient(circle closest-side at 140px 150px, #36964C 15px, transparent 0),
+	radial-gradient(circle at 170px 155px, #F9D8D4 15px, transparent 0),
+	radial-gradient(circle at 160px 150px, #286E38 15px, transparent 0);
+  
+	background-color: #F9D8D4;
+	background-size: 180px 210px;
+  border-left: 15px solid black;
+  box-shadow: 0 0 40px 40px rgba(200,200,200,.25);
+  color: white;
+}
+
+#modal-background {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  margin: 10px auto;
+  width: 90%;
+  height: max(95%, auto);
+  border-radius: 15px;
+}
+
+#close {
+  background-color: black;
+  color: white;
+  font-family: 'Staatliches', Arial;
+  font-weight: bold;
+  padding: 5px;
+  position: relative;
+  left: 15px;
+  top: 10px;
+  cursor: pointer;
+}
+
+#close:hover {
+  background-color: rgb(50,50,50);
+}
+
+#modal h2 {
+  font-family: 'Fjalla One', sans-serif;
+  text-align: center;
+}
+
+#modal p {
+  font-family: 'Josefin Sans', sans-serif;
+  text-align: center;
+}
+
+/*==========Scrollbar==========*/
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 2px grey;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(75,75,75);
+  border-radius: 5px;
+}
+
+footer {
+  font-size: 12pt;
+  color: #555555;
+  text-align: center;
+  font-family: 'Josefin Sans', sans-serif;
+  margin-top: 20px;
+}
+
+/*==========For Use with JavaScript==========*/
+.hidden {
+  display: none;
+}

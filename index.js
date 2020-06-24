@@ -23,6 +23,26 @@
     $("nav-btn").addEventListener("click", toggleNavBar);
   }
   
+  function openSongFromUrl() {
+    // parse query
+    let query = window.location.search;
+    if (query.length > 0) {
+      query = query.substring(1);
+      let querySplit = query.split("&");
+      let queryMap = {};
+      for (let i = 0; i < querySplit.length; i++) {
+        let strSplit = querySplit[i].split("=");
+        queryMap[strSplit[0]] = strSplit[1];
+      }
+      
+      let songname = queryMap.song;
+      let songCardId = songname.toLowerCase().replace(/\W/g, '');
+      let songCard = $(songCardId);
+      songCard.click();
+    }
+
+  }
+
   function toggleNavBar() {
     let nav = $("categories");
     nav.classList.toggle("nav-hidden");
@@ -53,6 +73,8 @@
     for (let i = 0; i < visibleTags.length; i++) {
       $("categories").appendChild(createCategory(visibleTags[i]));
     }
+
+    openSongFromUrl();
   };
 
   /**
@@ -115,7 +137,11 @@
     }
     result.addEventListener("click", function() {
       revealLyrics(song.name, song.lyrics);
-    })
+    });
+
+    let songId = song.name.toLowerCase().replace(/\W/g, '');
+    result.id = songId;
+
     return result;
   }
 
